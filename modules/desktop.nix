@@ -32,20 +32,20 @@
   };
 
   # Theming & Variables
-  qt.enable = true;
+  # qt.enable = true;
   
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-    QT_QPA_PLATFORM = "wayland;xcb";
-    # QT_STYLE_OVERRIDE = "kvantum";
-    QT_QPA_PLATFORMTHEME = "qt6ct";
-    GTK_USE_PORTAL = "1";
-    XCURSOR_THEME = "catppuccin-mocha-blue-cursors";
-    XCURSOR_SIZE = "24";
+  # environment.sessionVariables = {
+  #   NIXOS_OZONE_WL = "1";
+  #   _JAVA_AWT_WM_NONREPARENTING = "1";
+  #   QT_QPA_PLATFORM = "wayland;xcb";
+  #   # QT_STYLE_OVERRIDE = "kvantum";
+  #   QT_QPA_PLATFORMTHEME = "qt6ct";
+  #   GTK_USE_PORTAL = "1";
+  #   XCURSOR_THEME = "catppuccin-mocha-blue-cursors";
+  #   XCURSOR_SIZE = "24";
 
-    WGPU_BACKEND = "vulkan";
-  };
+  #   WGPU_BACKEND = "vulkan";
+  # };
 
   # Fix for Dolphin Menu
   environment.etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";

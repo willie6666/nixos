@@ -152,6 +152,7 @@
     (catppuccin-gtk.override { accents = [ "blue" ]; variant = "mocha"; })
     (catppuccin-sddm.override {
       flavor = "mocha";
+      accent = "blue";
       font   = "Noto Sans";
       fontSize = "12";
       # background = "${./wallpaper.png}";
