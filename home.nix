@@ -99,19 +99,19 @@ in
       name = "kvantum";
     };
 
-    qt5ctSettings = {
-      Appearance = {
-        style = "kvantum";
-        standard_dialogs = "xdgdesktopportal";
-      };
-    };
+    # qt5ctSettings = {
+    #   Appearance = {
+        # style = "kvantum";
+    #     standard_dialogs = "xdgdesktopportal";
+    #   };
+    # };
 
-    qt6ctSettings = {
-      Appearance = {
-        style = "kvantum";
-        standard_dialogs = "xdgdesktopportal";
-      };
-    };
+    # qt6ctSettings = {
+    #   Appearance = {
+    #     style = "kvantum";
+    #     standard_dialogs = "xdgdesktopportal";
+    #   };
+    # };
   };
 
   catppuccin.kvantum = {
