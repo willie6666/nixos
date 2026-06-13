@@ -30,21 +30,9 @@
       "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
     };
   };
-
-  # Theming & Variables
-  # qt.enable = true;
   
   environment.sessionVariables = {
-  #   NIXOS_OZONE_WL = "1";
-  #   _JAVA_AWT_WM_NONREPARENTING = "1";
-  #   QT_QPA_PLATFORM = "wayland;xcb";
-  #   # QT_STYLE_OVERRIDE = "kvantum";
     QT_QPA_PLATFORMTHEME = "qt6ct";
-  #   GTK_USE_PORTAL = "1";
-  #   XCURSOR_THEME = "catppuccin-mocha-blue-cursors";
-  #   XCURSOR_SIZE = "24";
-
-  #   WGPU_BACKEND = "vulkan";
   };
 
   # Fix for Dolphin Menu
@@ -79,18 +67,16 @@
   # Security & Polkit Agent Service
   security.polkit.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
-  
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    description = "polkit-gnome-authentication-agent-1";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
+
+  systemd.user.services.polkit-kde-authentication-agent-1 = {
+    description = "polkit-kde-authentication-agent-1";
+    wantedBy = [ "default.target" ];
+
     serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
+      Type = "simple";
+      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
     };
   };
 }

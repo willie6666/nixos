@@ -160,7 +160,7 @@
     })
 
     # 認證
-    polkit_gnome
+    # polkit_gnome
 
     # Flake Inputs
     inputs.quickshell.packages.${system}.default
