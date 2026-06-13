@@ -79,8 +79,6 @@
       ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
       Restart = "on-failure";
       RestartSec = 1;
-
-      UnsetEnvironment = [ "QT_PLUGIN_PATH" ];
     };
   };
 }
