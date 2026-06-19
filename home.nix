@@ -42,9 +42,7 @@ in
     prismlauncher
 
     spotify
-    (discord-canary.override {
-      withVencord = true;
-    })
+    vesktop
     swayidle
     cloudflare-warp
     proton-vpn
