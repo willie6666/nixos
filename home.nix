@@ -42,7 +42,7 @@ in
     prismlauncher
 
     spotify
-    (discord.override {
+    (discord-canary.override {
       withVencord = true;
     })
     swayidle
