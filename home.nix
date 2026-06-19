@@ -43,7 +43,6 @@ in
 
     spotify
     (discord.override {
-      withOpenASAR = true;
       withVencord = true;
     })
     swayidle
