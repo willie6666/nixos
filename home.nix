@@ -42,7 +42,10 @@ in
     prismlauncher
 
     spotify
-    pkgs-unstable.vesktop
+    (discord.override {
+      withOpenASAR = true;
+      withVencord = true;
+    })
     swayidle
     cloudflare-warp
     proton-vpn
@@ -66,6 +69,8 @@ in
     catppuccin-cursors.mochaBlue
     catppuccin-papirus-folders
     catppuccinGtk
+
+    aseprite
   ];
 
   catppuccin = {

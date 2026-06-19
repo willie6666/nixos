@@ -86,6 +86,7 @@
     libxcb-image
     libxcb-keysyms
     libxcb-render-util
+    libxtst
   ];
 
   # ── System Packages ───────────────────────────────────────────────────────
