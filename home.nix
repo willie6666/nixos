@@ -42,7 +42,8 @@ in
     prismlauncher
 
     spotify
-    vesktop
+    # vesktop
+    equibop
     swayidle
     cloudflare-warp
     proton-vpn
