@@ -21,6 +21,8 @@ in
   hardware.bluetooth.enable  = true;
   hardware.nvidia-container-toolkit.enable = true;
 
+  hardware.uinput.enable = true;
+
   # ── NVIDIA（PRIME Offload）────────────────────────────────────────────────
 
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];

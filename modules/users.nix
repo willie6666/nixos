@@ -21,7 +21,7 @@
   users.users.willie = {
     isNormalUser = true;
     description = "willie";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "ydotool" "wireshark" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "ydotool" "wireshark" "uinput" "video" ];
     shell = pkgs.fish;
     packages = with pkgs; [];
   };
