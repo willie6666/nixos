@@ -26,9 +26,13 @@
 
   services.sunshine = {
     enable = true;
-    autoStart = true;   # 登入圖形介面時自動啟動 (Systemd user service)
-    capSysAdmin = true; # Wayland 環境必備！允許免 root 進行 KMS 畫面擷取
-    openFirewall = true; # 自動放行 Moonlight 所需的所有 TCP/UDP 連接埠
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
+  systemd.user.services.sunshine.environment = {
+    LIBVA_DRIVER_NAME = "iHD";
   };
 
   services.avahi = {
@@ -38,4 +42,8 @@
       userServices = true;
     };
   };
+
+  services.udev.extraRules = ''
+    KERNEL=="uinput", MODE="0660", GROUP="input", SYMLINK+="uinput"
+  '';
 }

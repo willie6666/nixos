@@ -17,7 +17,13 @@ in
 
   # ── Hardware ──────────────────────────────────────────────────────────────
 
-  hardware.graphics.enable   = true;
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vpl-gpu-rt
+      intel-media-driver
+    ];
+  };
   hardware.bluetooth.enable  = true;
   hardware.nvidia-container-toolkit.enable = true;
 
