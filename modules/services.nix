@@ -45,5 +45,6 @@
 
   services.udev.extraRules = ''
     KERNEL=="uinput", MODE="0660", GROUP="input", SYMLINK+="uinput"
+    KERNEL=="uhid", SUBSYSTEM=="misc", MODE="0660", GROUP="uinput"
   '';
 }
