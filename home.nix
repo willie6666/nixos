@@ -130,24 +130,24 @@ in
 
   # ── Swayidle ──────────────────────────────────────────────────────────────
 
-  services.swayidle = {
-    enable = true;
+  # services.swayidle = {
+  #   enable = true;
 
-    timeouts = [
-      {
-        timeout = 300;
-        command = "${inputs.noctalia.packages.${system}.default}/bin/noctalia-shell ipc call lockScreen lock";
-      }
-      {
-        timeout = 305;
-        command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
-      }
-    ];
+  #   timeouts = [
+  #     {
+  #       timeout = 300;
+  #       command = "${inputs.noctalia.packages.${system}.default}/bin/noctalia-shell ipc call lockScreen lock";
+  #     }
+  #     {
+  #       timeout = 305;
+  #       command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
+  #     }
+  #   ];
 
-    events = {
-      before-sleep = "${inputs.noctalia.packages.${system}.default}/bin/noctalia-shell ipc call lockScreen lock";
-    };
-  };
+  #   events = {
+  #     before-sleep = "${inputs.noctalia.packages.${system}.default}/bin/noctalia-shell ipc call lockScreen lock";
+  #   };
+  # };
 
   # ── MPV ───────────────────────────────────────────────────────────────────
 
