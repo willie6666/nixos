@@ -35,9 +35,14 @@
 
     catppuccin.url = "github:catppuccin/nix/release-26.05";
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, ... } @inputs: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, nix-index-database, ... } @inputs: 
   let
     system = "x86_64-linux";
     pkgs-unstable = import nixpkgs-unstable {
@@ -50,6 +55,7 @@
       specialArgs = { inherit inputs pkgs-unstable system; };
       modules = [
         ./configuration.nix
+        nix-index-database.nixosModules.default
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;

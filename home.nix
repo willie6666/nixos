@@ -68,6 +68,8 @@ in
     catppuccinGtk
 
     aseprite
+
+    handbrake
   ];
 
   catppuccin = {

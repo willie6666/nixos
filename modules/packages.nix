@@ -5,6 +5,8 @@
 
   programs.fish.enable = true;
   programs.nix-ld.enable = true;
+  programs.nix-index.enableFishIntegration = true;
+  programs.nix-index-database.comma.enable = true;
 
   programs.steam = {
     enable = true;
@@ -186,10 +188,6 @@
     # 雜項
     shared-mime-info
     xdg-utils
-
-    comma
-
-    nix-index
 
     rclone
 
