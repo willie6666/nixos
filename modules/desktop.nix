@@ -4,11 +4,10 @@
   # Display Manager & Desktop
   services.xserver.enable = true;
   services.xserver.xkb.layout = "us";
-  
-  services.displayManager.sddm = {
+
+  programs.noctalia-greeter = {
     enable = true;
-    wayland.enable = true;
-    theme = "catppuccin-mocha-blue";
+    settings.keyboard.layout = "us";
   };
 
   services.flatpak.enable = true;
@@ -66,7 +65,7 @@
 
   # Security & Polkit Agent Service
   security.polkit.enable = true;
-  security.pam.services.sddm.enableGnomeKeyring = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
   systemd.user.services.polkit-kde-authentication-agent-1 = {
     description = "polkit-kde-authentication-agent-1";

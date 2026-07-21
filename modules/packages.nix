@@ -156,14 +156,6 @@
     glib
     gsettings-desktop-schemas
     (catppuccin-gtk.override { accents = [ "blue" ]; variant = "mocha"; })
-    (catppuccin-sddm.override {
-      flavor = "mocha";
-      accent = "blue";
-      font   = "Noto Sans";
-      fontSize = "12";
-      # background = "${./wallpaper.png}";
-      loginBackground = true;
-    })
 
     # 認證
     kdePackages.polkit-kde-agent-1

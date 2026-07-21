@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,6 +61,7 @@
       modules = [
         ./configuration.nix
         nix-index-database.nixosModules.default
+        inputs.noctalia-greeter.nixosModules.default
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
