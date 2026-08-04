@@ -13,7 +13,7 @@ in
   boot.kernelParams         = [ "nvidia-drm.modeset=1" ];
   
   boot.extraModulePackages = [ aorus-laptop ];
-  boot.kernelModules = [ "aorus-laptop" "coretemp" ];
+  boot.kernelModules = [ "aorus-laptop" "coretemp" "ntsync" ];
 
   # ── Hardware ──────────────────────────────────────────────────────────────
 
