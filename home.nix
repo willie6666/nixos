@@ -70,6 +70,8 @@ in
     aseprite
 
     handbrake
+
+    vinegar
   ];
 
   catppuccin = {
