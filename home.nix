@@ -72,6 +72,11 @@ in
     handbrake
 
     vinegar
+
+    pkgs-unstable.rojo
+    pkgs-unstable.luau-lsp
+    pkgs-unstable.stylua
+    pkgs-unstable.selene
   ];
 
   catppuccin = {
