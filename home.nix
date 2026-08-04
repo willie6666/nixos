@@ -77,6 +77,8 @@ in
     pkgs-unstable.luau-lsp
     pkgs-unstable.stylua
     pkgs-unstable.selene
+
+    nodejs_26
   ];
 
   catppuccin = {
