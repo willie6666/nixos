@@ -80,7 +80,7 @@ in
 
     nodejs_26
 
-    pkgs-unstable.bottles
+    pkgs-unstable.umu-launcher
   ];
 
   catppuccin = {
