@@ -80,7 +80,7 @@ in
 
     nodejs_26
 
-    bottles
+    pkgs-unstable.bottles
   ];
 
   catppuccin = {
