@@ -81,6 +81,8 @@ in
     nodejs_26
 
     pkgs-unstable.umu-launcher
+
+    nmap
   ];
 
   catppuccin = {
