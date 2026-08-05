@@ -79,6 +79,8 @@ in
     pkgs-unstable.selene
 
     nodejs_26
+
+    bottles
   ];
 
   catppuccin = {
