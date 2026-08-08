@@ -90,7 +90,9 @@ in
 
     pkgs-unstable.ctx7
 
-    python312
+    (python314.withPackages (ps: [
+      ps.pyyaml
+    ]))
   ];
 
   catppuccin = {
