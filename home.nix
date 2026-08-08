@@ -83,6 +83,10 @@ in
     pkgs-unstable.umu-launcher
 
     nmap
+
+    pkgs-unstable.luau-lsp
+
+    mcp-language-server
   ];
 
   catppuccin = {
