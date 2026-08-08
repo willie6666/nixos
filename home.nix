@@ -87,6 +87,10 @@ in
     pkgs-unstable.luau-lsp
 
     mcp-language-server
+
+    pkgs-unstable.ctx7
+
+    python312
   ];
 
   catppuccin = {
