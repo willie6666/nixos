@@ -83,6 +83,8 @@ in
     pkgs-unstable.umu-launcher
 
     nmap
+
+    inputs.llm-agents.packages.${system}.oh-my-codex
   ];
 
   catppuccin = {

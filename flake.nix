@@ -45,6 +45,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    llm-agents.url = "github:numtide/llm-agents.nix";
+
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, nix-index-database, ... } @inputs: 
