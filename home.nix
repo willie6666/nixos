@@ -93,6 +93,8 @@ in
     (python314.withPackages (ps: [
       ps.pyyaml
     ]))
+
+    pkgs-unstable.pi-coding-agent
   ];
 
   catppuccin = {
@@ -151,19 +153,6 @@ in
       obs-gstreamer
       obs-vkcapture
     ];
-  };
-
-  programs.pi-coding-agent = {
-    enable = true;
-
-    settings = {
-      packages = [
-        "npm:pi-mcp-adapter"
-        "npm:pi-web-access"
-        "npm:pi-subagents"
-        "npm:@upstash/context7-pi"
-      ];
-    };
   };
 
   # ── Swayidle ──────────────────────────────────────────────────────────────
