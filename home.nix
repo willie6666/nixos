@@ -153,6 +153,19 @@ in
     ];
   };
 
+  programs.pi-coding-agent = {
+    enable = true;
+
+    settings = {
+      packages = [
+        "npm:pi-mcp-adapter"
+        "npm:pi-web-access"
+        "npm:pi-subagents"
+        "npm:@upstash/context7-pi"
+      ];
+    };
+  };
+
   # ── Swayidle ──────────────────────────────────────────────────────────────
 
   # services.swayidle = {
