@@ -7,7 +7,13 @@
 
   programs.noctalia-greeter = {
     enable = true;
-    settings.keyboard.layout = "us";
+    settings = {
+      cursor = {
+        theme = "Bibata-Modern-Ice";
+        size = 24;
+        path = "${pkgs.bibata-cursors}/share/icons";
+      };
+    };
   };
 
   services.flatpak.enable = true;

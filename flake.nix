@@ -9,18 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia/legacy-v4";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     noctalia-greeter = {
       url = "github:noctalia-dev/noctalia-greeter";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -28,8 +18,6 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    globalprotect-openconnect.url = "github:yuezk/GlobalProtect-openconnect";
 
     claude-code.url = "github:sadjow/claude-code-nix";
 
@@ -61,6 +49,7 @@
       modules = [
         ./configuration.nix
         nix-index-database.nixosModules.default
+
         inputs.noctalia-greeter.nixosModules.default
 
         home-manager.nixosModules.home-manager {

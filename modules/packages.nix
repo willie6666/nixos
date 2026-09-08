@@ -39,7 +39,10 @@
 
   virtualisation.vmware.host.enable = true;
   virtualisation.docker.enable      = true;
-  virtualisation.waydroid.enable    = true;
+  virtualisation.waydroid = {
+    enable = true;
+    package = pkgs.waydroid-nftables;
+  };
 
   # ── nix-ld Libraries ──────────────────────────────────────────────────────
 
@@ -173,9 +176,7 @@
     # 認證
     kdePackages.polkit-kde-agent-1
 
-    # Flake Inputs
-    inputs.quickshell.packages.${system}.default
-    inputs.noctalia.packages.${system}.default
+    noctalia
 
     # 音影與媒體
     ffmpeg-full
@@ -199,8 +200,6 @@
     jq
     wl-mirror
 
-    # inputs.globalprotect-openconnect.packages.${system}.default
-
     v4l-utils
 
 
@@ -214,6 +213,8 @@
     labwc
 
     ripgrep
+
+    nixos-firewall-tool
   ];
 
   # ── 輸入法 ────────────────────────────────────────────────────────────────

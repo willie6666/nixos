@@ -42,7 +42,7 @@ in
     prismlauncher
 
     spotify
-    vesktop
+    pkgs-unstable.vesktop
     swayidle
     cloudflare-warp
     proton-vpn
@@ -95,6 +95,8 @@ in
     ]))
 
     pkgs-unstable.pi-coding-agent
+
+    pkgs-unstable.cursor-cli
   ];
 
   catppuccin = {
