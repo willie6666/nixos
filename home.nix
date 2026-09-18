@@ -97,6 +97,8 @@ in
     pkgs-unstable.pi-coding-agent
 
     pkgs-unstable.cursor-cli
+
+    incus
   ];
 
   catppuccin = {

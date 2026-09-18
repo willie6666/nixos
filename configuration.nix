@@ -9,7 +9,6 @@
     ./modules/services.nix
     ./modules/users.nix
     ./modules/firewall.nix
-    ./cachix.nix
   ];
 
   nix.gc = {
