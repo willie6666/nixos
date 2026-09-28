@@ -26,5 +26,19 @@
     packages = with pkgs; [];
   };
 
+  security.sudo.extraRules = [
+    {
+      users = [ "willie" ];
+      runAs = "root";
+
+      commands = [
+        {
+          command = "${pkgs.waydroid}/bin/waydroid shell";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
+
   environment.shells = with pkgs; [ fish ];
 }

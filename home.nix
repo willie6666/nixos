@@ -41,7 +41,7 @@ in
     pkgs-unstable.jetbrains.idea
     prismlauncher
 
-    spotify
+    pkgs-unstable.spotify
     pkgs-unstable.vesktop
     swayidle
     cloudflare-warp
@@ -99,6 +99,10 @@ in
     pkgs-unstable.cursor-cli
 
     incus
+
+    pkgs-unstable.code-cursor
+
+    pkgs-unstable.lan-mouse
   ];
 
   catppuccin = {
