@@ -105,6 +105,10 @@ in
     pkgs-unstable.lan-mouse
   ];
 
+  imports = [
+    inputs.codex-desktop-linux.homeManagerModules.default
+  ];
+
   programs.codexDesktopLinux = {
     enable = true;
   };
