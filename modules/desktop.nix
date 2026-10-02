@@ -96,24 +96,9 @@
   systemd.user.services.polkit-kde-authentication-agent-1 = {
     description = "KDE Polkit Authentication Agent";
 
-    wantedBy = [
-      "graphical-session.target"
-    ];
-
-    wants = [
-      "graphical-session.target"
-    ];
-
-    after = [
-      "graphical-session.target"
-    ];
-
-    # polkit-kde-agent 是 Qt6 application。
-    # 明確要求它走 qt6ct + Kvantum。
-    environment = {
-      QT_QPA_PLATFORMTHEME = "qt6ct";
-      QT_STYLE_OVERRIDE = "kvantum";
-    };
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
 
     serviceConfig = {
       Type = "simple";
