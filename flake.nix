@@ -39,7 +39,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, nix-index-database, codex-desktop, ... } @inputs: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, nix-index-database, codex-desktop-linux, ... } @inputs: 
   let
     system = "x86_64-linux";
     pkgs-unstable = import nixpkgs-unstable {
