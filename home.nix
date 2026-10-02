@@ -56,7 +56,7 @@ in
 
     pkgs-unstable.burpsuite
 
-    pkgs-unstable.codex
+    # pkgs-unstable.codex
 
     qt6Packages.qtstyleplugin-kvantum
     libsForQt5.qtstyleplugin-kvantum
@@ -104,6 +104,10 @@ in
 
     pkgs-unstable.lan-mouse
   ];
+
+  programs.codexDesktopLinux = {
+    enable = true;
+  };
 
   catppuccin = {
     enable = true;
