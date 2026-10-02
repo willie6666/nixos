@@ -5,7 +5,7 @@
   services.xserver.enable = true;
   services.xserver.xkb.layout = "us";
 
-  programs.noctalia-greeter = {
+  services.displayManager.noctalia-greeter = {
     enable = true;
 
     settings = {
