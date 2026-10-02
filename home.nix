@@ -1,6 +1,14 @@
-{ config, pkgs, inputs, pkgs-unstable, system, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  pkgs-unstable,
+  ...
+}:
 
 let
+  system = pkgs.stdenv.hostPlatform.system;
+
   catppuccinGtk = pkgs.magnetic-catppuccin-gtk.override {
     accent = [ "blue" ];
     shade = "dark";
@@ -9,115 +17,108 @@ let
   };
 in
 {
-  home.username    = "willie";
-  home.homeDirectory = "/home/willie";
-  home.stateVersion  = "26.05";
+  home = {
+    username = "willie";
+    homeDirectory = "/home/willie";
+    stateVersion = "26.05";
 
-  # ── Home Packages ─────────────────────────────────────────────────────────
+    packages = with pkgs; [
+      inputs.zen-browser.packages.${system}.default
 
-  home.packages = with pkgs; [
-    inputs.zen-browser.packages.${system}.default
+      foot
 
-    foot
+      kdePackages.filelight
 
-    kdePackages.filelight
+      steamcmd
+      heroic
 
-    steamcmd
-    heroic
+      pkgs-unstable.opencode
+      inputs.claude-code.packages.${system}.default
 
-    pkgs-unstable.opencode
-    inputs.claude-code.packages.${system}.default
+      blender
+      blockbench
+      pkgs-unstable.godot
 
-    blender
-    blockbench
-    pkgs-unstable.godot
+      scrcpy
+      wireshark
+      tcpdump
 
-    scrcpy
-    wireshark
-    tcpdump
+      pkgs-unstable.rustdesk-flutter
 
-    pkgs-unstable.rustdesk-flutter
+      pkgs-unstable.jetbrains.idea
+      prismlauncher
 
-    pkgs-unstable.jetbrains.idea
-    prismlauncher
+      pkgs-unstable.spotify
+      pkgs-unstable.vesktop
+      swayidle
+      cloudflare-warp
+      proton-vpn
+      solaar
 
-    pkgs-unstable.spotify
-    pkgs-unstable.vesktop
-    swayidle
-    cloudflare-warp
-    proton-vpn
-    solaar
+      pkgs-unstable.android-studio
 
-    pkgs-unstable.android-studio
+      inputs.antigravity-nix.packages.${system}.google-antigravity-cli
 
-    inputs.antigravity-nix.packages.${system}.google-antigravity-cli
+      dbeaver-bin
 
-    dbeaver-bin
+      pkgs-unstable.burpsuite
 
-    pkgs-unstable.burpsuite
+      qt6Packages.qtstyleplugin-kvantum
+      libsForQt5.qtstyleplugin-kvantum
+      qt6Packages.qt6ct
+      libsForQt5.qt5ct
+      catppuccin-kvantum
+      catppuccin-cursors.mochaBlue
+      catppuccin-papirus-folders
+      catppuccinGtk
 
-    # pkgs-unstable.codex
+      aseprite
+      handbrake
+      vinegar
 
-    qt6Packages.qtstyleplugin-kvantum
-    libsForQt5.qtstyleplugin-kvantum
-    qt6Packages.qt6ct
-    libsForQt5.qt5ct
-    catppuccin-kvantum
-    catppuccin-cursors.mochaBlue
-    catppuccin-papirus-folders
-    catppuccinGtk
+      pkgs-unstable.rojo
+      pkgs-unstable.luau-lsp
+      pkgs-unstable.stylua
+      pkgs-unstable.selene
 
-    aseprite
+      nodejs_26
 
-    handbrake
+      pkgs-unstable.umu-launcher
 
-    vinegar
+      nmap
 
-    pkgs-unstable.rojo
-    pkgs-unstable.luau-lsp
-    pkgs-unstable.stylua
-    pkgs-unstable.selene
+      mcp-language-server
+      pkgs-unstable.ctx7
 
-    nodejs_26
+      (python314.withPackages (ps: [
+        ps.pyyaml
+      ]))
 
-    pkgs-unstable.umu-launcher
+      pkgs-unstable.pi-coding-agent
+      pkgs-unstable.cursor-cli
 
-    nmap
+      incus
 
-    pkgs-unstable.luau-lsp
+      pkgs-unstable.code-cursor
+      pkgs-unstable.lan-mouse
+    ];
+  };
 
-    mcp-language-server
-
-    pkgs-unstable.ctx7
-
-    (python314.withPackages (ps: [
-      ps.pyyaml
-    ]))
-
-    pkgs-unstable.pi-coding-agent
-
-    pkgs-unstable.cursor-cli
-
-    incus
-
-    pkgs-unstable.code-cursor
-
-    pkgs-unstable.lan-mouse
-  ];
-
-  imports = [
-    inputs.codex-desktop-linux.homeManagerModules.default
-  ];
+  # ── Codex Desktop ─────────────────────────────────────────────────────────
 
   programs.codexDesktopLinux = {
     enable = true;
   };
+
+  # ── Catppuccin ────────────────────────────────────────────────────────────
 
   catppuccin = {
     enable = true;
     flavor = "mocha";
     accent = "blue";
   };
+
+  # ── GTK ───────────────────────────────────────────────────────────────────
 
   gtk = {
     enable = true;
@@ -135,6 +136,8 @@ in
 
     colorScheme = "dark";
   };
+
+  # ── Qt ────────────────────────────────────────────────────────────────────
 
   qt = {
     enable = true;
@@ -161,8 +164,12 @@ in
   # ── OBS Studio ────────────────────────────────────────────────────────────
 
   programs.obs-studio = {
-    enable  = true;
-    package = pkgs.obs-studio.override { cudaSupport = true; };
+    enable = true;
+
+    package = pkgs.obs-studio.override {
+      cudaSupport = true;
+    };
+
     plugins = with pkgs.obs-studio-plugins; [
       wlrobs
       obs-pipewire-audio-capture
@@ -175,20 +182,24 @@ in
 
   # services.swayidle = {
   #   enable = true;
-
+  #
   #   timeouts = [
   #     {
   #       timeout = 300;
-  #       command = "${inputs.noctalia.packages.${system}.default}/bin/noctalia-shell ipc call lockScreen lock";
+  #       command =
+  #         "${inputs.noctalia.packages.${system}.default}/bin/noctalia-shell "
+  #         + "ipc call lockScreen lock";
   #     }
   #     {
   #       timeout = 305;
   #       command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
   #     }
   #   ];
-
+  #
   #   events = {
-  #     before-sleep = "${inputs.noctalia.packages.${system}.default}/bin/noctalia-shell ipc call lockScreen lock";
+  #     before-sleep =
+  #       "${inputs.noctalia.packages.${system}.default}/bin/noctalia-shell "
+  #       + "ipc call lockScreen lock";
   #   };
   # };
 
@@ -196,13 +207,15 @@ in
 
   programs.mpv = {
     enable = true;
+
     config = {
-      profile      = "gpu-hq";
-      vo           = "gpu";
-      hwdec        = "auto-safe";
-      ytdl-format  = "bestvideo+bestaudio";
-      keep-open    = true;
+      profile = "gpu-hq";
+      vo = "gpu";
+      hwdec = "auto-safe";
+      ytdl-format = "bestvideo+bestaudio";
+      keep-open = true;
     };
+
     scripts = with pkgs.mpvScripts; [
       mpris
       uosc
@@ -214,22 +227,34 @@ in
   # ── Direnv ────────────────────────────────────────────────────────────────
 
   programs.direnv = {
-    enable               = true;
+    enable = true;
     enableBashIntegration = true;
-    nix-direnv.enable    = true;
+    nix-direnv.enable = true;
   };
 
-  # ── Steam Desktop Entry（HiDPI 修正）─────────────────────────────────────
+  # ── Steam Desktop Entry ──────────────────────────────────────────────────
 
   xdg.desktopEntries.steam = {
-    name    = "Steam";
+    name = "Steam";
     comment = "Application for managing and playing games on Steam";
-    exec    = "env GDK_SCALE=2 GDK_DPI_SCALE=0.625 steam %U";
-    icon    = "steam";
+
+    exec = "env GDK_SCALE=2 GDK_DPI_SCALE=0.625 steam %U";
+
+    icon = "steam";
     terminal = false;
-    type    = "Application";
-    categories = [ "Network" "FileTransfer" "Game" ];
-    mimeType   = [ "x-scheme-handler/steam" "x-scheme-handler/steamlink" ];
+    type = "Application";
+
+    categories = [
+      "Network"
+      "FileTransfer"
+      "Game"
+    ];
+
+    mimeType = [
+      "x-scheme-handler/steam"
+      "x-scheme-handler/steamlink"
+    ];
+
     settings.Keywords = "Games";
   };
 

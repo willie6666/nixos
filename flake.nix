@@ -4,6 +4,11 @@
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    home-manager = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,11 +16,6 @@
 
     noctalia-greeter = {
       url = "github:noctalia-dev/noctalia-greeter";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,43 +33,64 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    codex-desktop-linux = {
-      url = "github:ilysenko/codex-desktop-linux";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    codex-desktop-linux.url =
+      "github:ilysenko/codex-desktop-linux";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, catppuccin, nix-index-database, codex-desktop-linux, ... } @inputs: 
-  let
-    system = "x86_64-linux";
-    pkgs-unstable = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true; 
+  outputs =
+    inputs@{
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
+
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+
+        config = {
+          allowUnfree = true;
+        };
+      };
+    in
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        specialArgs = {
+          inherit inputs pkgs-unstable;
+        };
+
+        modules = [
+          ./configuration.nix
+
+          inputs.nix-index-database.nixosModules.default
+          inputs.noctalia-greeter.nixosModules.default
+
+          home-manager.nixosModules.home-manager
+
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+
+              # 給所有 home-manager users 使用的參數
+              extraSpecialArgs = {
+                inherit inputs pkgs-unstable;
+              };
+
+              # 所有 HM users 共用的 modules
+              sharedModules = [
+                inputs.catppuccin.homeModules.catppuccin
+                inputs.codex-desktop-linux.homeManagerModules.default
+              ];
+
+              users.willie = import ./home.nix;
+            };
+          }
+        ];
+      };
     };
-  in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = { inherit inputs pkgs-unstable system; };
-      modules = [
-        ./configuration.nix
-        nix-index-database.nixosModules.default
-
-        inputs.noctalia-greeter.nixosModules.default
-
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-          home-manager.extraSpecialArgs = { inherit inputs pkgs-unstable system; };
-
-          home-manager.users.willie = {
-            imports = [
-              ./home.nix
-              catppuccin.homeModules.catppuccin
-            ];
-          };
-        }
-      ];
-    };
-  };
 }
