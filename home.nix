@@ -63,10 +63,6 @@ in
 
       pkgs-unstable.burpsuite
 
-      qt6Packages.qtstyleplugin-kvantum
-      libsForQt5.qtstyleplugin-kvantum
-      qt6Packages.qt6ct
-      libsForQt5.qt5ct
       catppuccin-kvantum
       catppuccin-cursors.mochaBlue
       catppuccin-papirus-folders
