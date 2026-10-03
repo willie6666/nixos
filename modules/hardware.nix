@@ -52,6 +52,8 @@ in
     };
   };
 
+  hardware.intelWifiLarDisable.enable = true;
+
   # ── Audio（Pipewire）─────────────────────────────────────────────────────
 
   services.pulseaudio.enable = false;

@@ -9,6 +9,7 @@
     ./modules/services.nix
     ./modules/users.nix
     ./modules/firewall.nix
+    ./modules/iwlmvm-lar-disable
   ];
 
   nix.gc = {
