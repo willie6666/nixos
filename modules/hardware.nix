@@ -54,6 +54,12 @@ in
 
   hardware.intelWifiLarDisable.enable = true;
 
+  # Keep virtual hotspot add/remove events from restarting the Wi-Fi client.
+  # Explicit interfaces suppress NixOS's global WLAN hotplug restart rule.
+  networking.wireless.interfaces = [ "wlo1" ];
+  systemd.services."wpa_supplicant-wlo1".aliases = [ "wpa_supplicant.service" ];
+  networking.networkmanager.unmanaged = [ "interface-name:nhap*" ];
+
   # ── Audio（Pipewire）─────────────────────────────────────────────────────
 
   services.pulseaudio.enable = false;
