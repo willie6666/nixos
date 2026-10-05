@@ -51,7 +51,6 @@ in
       pkgs-unstable.spotify
       pkgs-unstable.vesktop
       swayidle
-      pkgs-unstable.cloudflare-warp
       proton-vpn
       solaar
 

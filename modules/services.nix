@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, pkgs-unstable, ... }:
 
 {
   # Networking
@@ -22,7 +22,14 @@
   hardware.logitech.wireless.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
-  services.cloudflare-warp.enable = true;
+  services.cloudflare-warp = {
+    enable = true;
+    package = pkgs-unstable.cloudflare-warp;
+  };
+
+  systemd.services.cloudflare-warp.serviceConfig.BindReadOnlyPaths = [
+    "${lib.getExe pkgs.nftables}:/usr/sbin/nft"
+  ];
 
   services.sunshine = {
     enable = true;
