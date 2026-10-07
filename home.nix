@@ -96,6 +96,8 @@ in
 
       pkgs-unstable.code-cursor
       pkgs-unstable.lan-mouse
+
+      pkgs-unstable.heroic
     ];
   };
 

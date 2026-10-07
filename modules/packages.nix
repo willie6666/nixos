@@ -217,6 +217,14 @@
     nixos-firewall-tool
 
     iw
+
+    opencv
+
+    pkg-config
+
+    cmake
+
+    clang-tools
   ];
 
   # ── 輸入法 ────────────────────────────────────────────────────────────────
