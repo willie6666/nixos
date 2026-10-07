@@ -30,7 +30,6 @@ in
       kdePackages.filelight
 
       steamcmd
-      heroic
 
       pkgs-unstable.opencode
       inputs.claude-code.packages.${system}.default
