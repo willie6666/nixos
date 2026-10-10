@@ -10,7 +10,7 @@
     };
 
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,8 +33,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    codex-desktop-linux.url =
-      "github:ilysenko/codex-desktop-linux";
+    codex-desktop-linux.url = "github:ilysenko/codex-desktop-linux";
+
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs =

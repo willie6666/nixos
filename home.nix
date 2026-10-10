@@ -97,6 +97,8 @@ in
       pkgs-unstable.lan-mouse
 
       pkgs-unstable.heroic
+
+      inputs.llm-agents.packages.${system}.claude-desktop
     ];
   };
 
