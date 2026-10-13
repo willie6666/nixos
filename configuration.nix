@@ -10,6 +10,7 @@
     ./modules/users.nix
     ./modules/firewall.nix
     ./modules/iwlmvm-lar-disable
+    ./modules/rtw89-usb
   ];
 
   nix.gc = {
