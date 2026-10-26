@@ -97,6 +97,14 @@
     libxcb-render-util
     libxtst
     libpulseaudio
+    libpng
+    expat
+    libdrm
+    libxkbfile
+    libbsd
+
+    libsm
+    libice
   ];
 
   # ── System Packages ───────────────────────────────────────────────────────
