@@ -69,6 +69,7 @@
     freetype
     ffmpeg_7-full
     alsa-lib
+    libGLU
 
     # 瀏覽器與底層網路渲染安全依賴
     nss
@@ -217,6 +218,8 @@
     nixos-firewall-tool
 
     iw
+
+    libpulseaudio
   ];
 
   # ── 輸入法 ────────────────────────────────────────────────────────────────
