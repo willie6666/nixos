@@ -33,8 +33,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    codex-desktop-linux.url = "github:ilysenko/codex-desktop-linux";
-
     llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
@@ -85,7 +83,6 @@
               # 所有 HM users 共用的 modules
               sharedModules = [
                 inputs.catppuccin.homeModules.catppuccin
-                inputs.codex-desktop-linux.homeManagerModules.default
               ];
 
               users.willie = import ./home.nix;

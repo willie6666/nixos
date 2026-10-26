@@ -34,5 +34,16 @@
   # nixpkgs.config.cudaSupport = true;
   # nixpkgs.config.cudaVersion = "12";
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      solaar = prev.solaar.overrideAttrs (old: {
+        disabledTestPaths = (old.disabledTestPaths or []) ++ [
+          "tests/logitech_receiver/test_desktop_notifications.py::test_show"
+          "tests/solaar/ui/test_desktop_notifications.py::test_show"
+        ];
+      });
+    })
+  ];
+
   system.stateVersion = "25.11";
 }

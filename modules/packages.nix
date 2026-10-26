@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, system, ... }:
+{ config, pkgs, pkgs-unstable, inputs, system, ... }:
 
 {
   # ── Programs ──────────────────────────────────────────────────────────────
@@ -227,7 +227,7 @@
     fcitx5.addons = with pkgs; [
       fcitx5-mozc
       fcitx5-gtk
-      fcitx5-mcbopomofo
+      pkgs-unstable.fcitx5-mcbopomofo
     ];
   };
 }

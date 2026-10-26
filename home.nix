@@ -99,13 +99,13 @@ in
       pkgs-unstable.heroic
 
       inputs.llm-agents.packages.${system}.claude-desktop
+
+      inputs.llm-agents.packages.${system}.chatgpt
+
+      remmina
+
+      moonlight-qt
     ];
-  };
-
-  # ── Codex Desktop ─────────────────────────────────────────────────────────
-
-  programs.codexDesktopLinux = {
-    enable = true;
   };
 
   # ── Catppuccin ────────────────────────────────────────────────────────────
@@ -209,7 +209,8 @@ in
     config = {
       profile = "gpu-hq";
       vo = "gpu";
-      hwdec = "auto-safe";
+      hwdec = "vaapi";
+      gpu-api = "opengl";
       ytdl-format = "bestvideo+bestaudio";
       keep-open = true;
     };
