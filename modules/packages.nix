@@ -96,6 +96,7 @@
     libxcb-keysyms
     libxcb-render-util
     libxtst
+    libpulseaudio
   ];
 
   # ── System Packages ───────────────────────────────────────────────────────
@@ -218,8 +219,6 @@
     nixos-firewall-tool
 
     iw
-
-    libpulseaudio
   ];
 
   # ── 輸入法 ────────────────────────────────────────────────────────────────
