@@ -105,6 +105,8 @@ in
       remmina
 
       moonlight-qt
+
+      pkgs-unstable.codex
     ];
   };
 
